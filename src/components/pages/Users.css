@@ -1,0 +1,30 @@
+body{
+    overflow-x: hidden;
+}
+#dishes p{
+    font-size:2em;
+}
+#dishes2 img{
+    margin-top:-50px;
+    clip-path: circle();
+}
+.map{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+#dishes2 .card{
+    border-radius:0.5em;
+    box-shadow:5px 5px 15px #e74c3c;
+    transition: all 0.3s ease in;
+    -webkit-transition: all 0.3s ease-in;
+    -moz-transition: all 0.3s ease in;
+
+}
+#dishes2 .card:hover{
+    background: #e74c3c;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 5px 5px 10px #9E9E9E
+}
