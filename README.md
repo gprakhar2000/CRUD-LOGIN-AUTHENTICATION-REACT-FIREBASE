@@ -1,3 +1,7 @@
+#For admin login use Email:admin@example.com pwd:admin123
+#Register as user and then login as user
+#Implemented separate access to admin and user without any intermediate access allowed
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
