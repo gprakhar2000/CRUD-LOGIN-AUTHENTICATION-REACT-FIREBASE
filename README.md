@@ -1,6 +1,6 @@
-#For admin login use Email:admin@example.com pwd:admin123<br/>
-#Register as user and then login as user<br/>
-#Implemented separate access to admin and user without any intermediate access allowed<br/>
+# For admin login use Email:admin@example.com pwd:admin123<br/>
+# Register as user and then login as user<br/>
+# Implemented separate access to admin and user without any intermediate access allowed<br/>
 
 
 # Getting Started with Create React App
