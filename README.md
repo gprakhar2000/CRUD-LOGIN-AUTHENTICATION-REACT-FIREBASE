@@ -1,3 +1,9 @@
+## Link to project-https://task-cdecf.web.app/ <br/>
+### For admin login use Email:admin@example.com Pwd:admin123<br/>
+### Register as user and then login as user<br/>
+### Implemented separate access to admin and user without any intermediate access allowed<br/>
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
