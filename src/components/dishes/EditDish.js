@@ -34,7 +34,6 @@ const EditDish = () => {
             Fats:snapshot.data().Fats,id:snapshot.id
         }));
     },[])
-    console.log(dish)
     return (
         <div className="container mt-4">
             <div className="w-75 mx-auto shadow p-5">

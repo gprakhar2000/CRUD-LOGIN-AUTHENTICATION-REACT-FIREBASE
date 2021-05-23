@@ -5,25 +5,21 @@ import { useState ,useEffect} from 'react'
 import { AiFillEye } from "react-icons/ai"
 import { AiFillEyeInvisible } from "react-icons/ai"
 import './Register.css'
-const setLocalStorage = (key, value) => {
-  if (window !== 'undefined') {
-      localStorage.setItem(key, JSON.stringify(value));
-  }
-};
+
 
 const Register = () => {
     let history=useHistory()
-    const [user, setUser] = useState("");
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [hasAccount, setHasAccount] = useState(false)
-    const [Userlogin, setUserLogin] = useState('')
-    const [Admin, setAdmin] = useState('')
+
+
+
     const clearInputs = () => {
         setEmail('')
-        setPasswordError('')
+        setPassword('')
     }
     const clearErrors = () => {
         setEmailError('')
@@ -36,11 +32,11 @@ const Register = () => {
             .auth()
             .createUserWithEmailAndPassword(email, password)
             .then(res => {
-              setLocalStorage('user', res.user);
-              console.log(res.user)
+              
               history.push('/login')
             })
             .catch(err => {
+                clearInputs()
                 switch (err.code) {
                     case "auth/email-already-in-use":
                     case "auth/invalid-email":
@@ -54,27 +50,12 @@ const Register = () => {
     }
     
     
-    const authListener = () => {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                clearInputs()
-                setUser(user);
-            }
-            else {
-                setUser("");
-            }
-        })
-    }
-    useEffect(() => {
-        authListener();
-    }, [])
-
+    
     const [showPassword,setShowPassword]=useState(false)
     return (
 
         <div className="container d-flex flex-wrap py-5 mt-5">
 
-            {Userlogin ? <Redirect to="/login" /> : null}
 
             <div className="w-50 mx-auto my-auto shadow p-5">
   
@@ -89,7 +70,7 @@ const Register = () => {
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
-                    <p className="errorMsg">{emailError}</p>
+                    {emailError? <p className=" alert alert-danger mt-1 errorMsg">{emailError}</p> :<p></p>}
                 </div>
                 <div className="form-group position-relative">
                     <input
@@ -102,7 +83,8 @@ const Register = () => {
                         onChange={e => setPassword(e.target.value)}
                     />
                     <div class="" id="toggler-icon"><button class="btn btn-light py-2" id="toggle-button" onClick={()=>setShowPassword(!showPassword)}>{showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}</button></div>
-                    <p className="errorMsg">{passwordError}</p>
+                    
+                    {passwordError? <p className=" alert alert-danger mt-1 errorMsg">{passwordError}</p> :<p></p>}
                 </div>
 
                 <div className="btnContainer">

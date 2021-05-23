@@ -31,6 +31,7 @@ const AddDish = () => {
                     <div className="form-group">
                         <input
                             type="text"
+                            autoFocus required
                             className="form-control form-control-lg"
                             placeholder="Enter Your Dish Name"
                             name="Dishname"
@@ -42,6 +43,7 @@ const AddDish = () => {
                     <div className="form-group">
                         <input
                             type="number"
+                            autoFocus required
                             className="form-control form-control-lg"
                             placeholder="Enter Dish Protein Value"
                             name="ProteinValue"
@@ -52,6 +54,7 @@ const AddDish = () => {
                     <div className="form-group">
                         <input
                             type="number"
+                            autoFocus required
                             className="form-control form-control-lg"
                             placeholder="Enter Dish Carbohydrate Value"
                             name="Carbohydrates"
@@ -62,6 +65,7 @@ const AddDish = () => {
                     <div className="form-group">
                         <input
                             type="number"
+                            autoFocus required
                             className="form-control form-control-lg"
                             placeholder="Enter Dish Fats Value"
                             name="Fats"

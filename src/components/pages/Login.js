@@ -4,6 +4,7 @@ import firebase from '../firebase'
 import { useState, useEffect } from 'react'
 import { AiFillEye } from "react-icons/ai"
 import { AiFillEyeInvisible } from "react-icons/ai"
+import { FcGoogle } from "react-icons/fc"
 import './Register.css'
 const setLocalStorage = (key, value) => {
     if (window !== 'undefined') {
@@ -13,21 +14,53 @@ const setLocalStorage = (key, value) => {
 
 const Login = () => {
     let history = useHistory()
-    const [user, setUser] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
-    const [hasAccount, setHasAccount] = useState(false)
-    const [Userlogin, setUserLogin] = useState('')
-    const [Admin, setAdmin] = useState('')
+
     const clearInputs = () => {
         setEmail('')
-        setPasswordError('')
+        setPassword('')
     }
     const clearErrors = () => {
         setEmailError('')
         setPasswordError('')
+    }
+    const handleSignInwithGoogle = () => {
+        if (document.getElementById('User').checked) {
+            var provider = new firebase.auth.GoogleAuthProvider();
+            firebase.auth()
+                .signInWithPopup(provider)
+                .then(res => {
+                    if (window !== 'undefined') {
+                        if (localStorage.getItem('user') !== null) {
+                            localStorage.removeItem('user');
+                        } else {
+                            localStorage.removeItem('admin');
+                        }
+                    }
+                    setLocalStorage('user', res.user);
+                    console.log(res.user);
+                    history.push('/user')
+                })
+                .catch((error) => {
+                    // Handle Errors here.
+                    var errorCode = error.code;
+                    var errorMessage = error.message;
+                    // The email of the user's account used.
+                    var email = error.email;
+                    // The firebase.auth.AuthCredential type that was used.
+                    var credential = error.credential;
+                    // ...
+                });
+        }
+        else if(document.getElementById('Admin').checked){
+            window.alert("Admin cannot sign up");
+        }
+        else{
+            window.alert("Please select user");
+        }
     }
     const handleLogin = () => {
         if (document.getElementById("User").checked) {
@@ -47,6 +80,7 @@ const Login = () => {
                     history.push('/user')
                 })
                 .catch(err => {
+                    clearInputs()
                     switch (err.code) {
                         case "auth/invalid-email":
                         case "auth/user-disabled":
@@ -79,29 +113,10 @@ const Login = () => {
         }
     }
 
-
-    const authListener = () => {
-        firebase.auth().onAuthStateChanged(user => {
-            if (user) {
-                clearInputs()
-                setUser(user);
-            }
-            else {
-                setUser("");
-            }
-        })
-    }
-    useEffect(() => {
-        authListener();
-    }, [])
     const [showPassword, setShowPassword] = useState(false)
     return (
-
         <div className="container d-flex flex-wrap py-5 mt-5">
-            {Userlogin ? <Redirect to="/user"></Redirect> : null}
-            {Admin ? <Redirect to="/pages/admin"></Redirect> : null}
             <div className="w-50 mx-auto my-auto shadow p-5">
-
                 <h2 className="text-center mb-4">Hi! Login</h2>
                 <div className="form-group">
                     <input
@@ -113,7 +128,7 @@ const Login = () => {
                         value={email}
                         onChange={e => setEmail(e.target.value)}
                     />
-                    <p className="errorMsg">{emailError}</p>
+                    {emailError? <p className=" alert alert-danger mt-1 errorMsg">{emailError}</p> :<p></p>}
                 </div>
                 <div className="form-group position-relative">
                     <input
@@ -130,7 +145,7 @@ const Login = () => {
                             {showPassword ? <AiFillEye /> : <AiFillEyeInvisible />}
                         </button>
                     </div>
-                    <p className="errorMsg">{passwordError}</p>
+                    {passwordError? <p className=" alert alert-danger mt-1 errorMsg">{passwordError}</p> :<p></p>}
                 </div>
 
                 <div className="btnContainer">
@@ -143,6 +158,7 @@ const Login = () => {
                         <label className="form-check-label" for="User">User</label>
                     </div>
                     <button class="btn btn-primary btn-lg btn-block mt-2 mb-2" onClick={handleLogin}>Login</button>
+                    <button class="btn btn-outline-dark btn-lg  mt-2 mb-2" onClick={handleSignInwithGoogle}>Sign In <FcGoogle /></button>
                     <p class="m-4 text-right">Don't have an account?
                                 <Link to='/register'><button class="btn btn-secondary btn-sm ml-2">Register</button></Link></p>
 
