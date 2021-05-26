@@ -54,10 +54,10 @@ const Register = () => {
     const [showPassword,setShowPassword]=useState(false)
     return (
 
-        <div className="container d-flex flex-wrap py-5 mt-5">
+        <div className="container py-5 mt-5">
 
 
-            <div className="w-50 mx-auto my-auto shadow p-5">
+            <div className="mx-auto my-auto shadow p-5" id="container-login">
   
                 <h2 className="text-center mb-4">Hi! Register</h2>
                 <div className="form-group">

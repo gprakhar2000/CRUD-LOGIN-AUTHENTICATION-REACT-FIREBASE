@@ -24,11 +24,11 @@ const User = (props) => {
     return (
         <div id="dishes">
             <Navbar />
-            <input className="ml-4 mt-3 pl-3 py-2 w-25" type="text" placeholder="Search..."
+            <input id="search" className="ml-4 mt-3 pl-3 py-2" type="text" placeholder="Search..."
                 onChange={event => { setSearchDish(event.target.value) }}
             />
-            <div className=" shadow row mb-5">
-                <div className="col text-center">
+            <div className="shadow mb-5">
+                <div className="w-100 p-1 text-center">
                     <h1 className="mt-2">My Dishes</h1>
                     <p className="mt-3">Here is a view of your own nutritious dishes</p>
                 </div>
@@ -43,13 +43,13 @@ const User = (props) => {
                     }
                 }).map((dish, index) => (
                     <section id="dishes2">
-                        <div className="container ml-3 mb-5 mr-3 text-center">
+                        <div className="ml-3 mb-5 mr-3 text-center">
                             <div className="row">
                                 <div>
                                     <div className="card col">
                                         <div className="card-body">
                                             <img src={img1} className="img-fluid-rounded-circle w-75 mb-3" />
-                                            <h3 className="mb-4">{dish.Dishname}</h3>
+                                            <h3 className="mb-4" >{dish.Dishname}</h3>
                                             <div className="text-left">
                                                 <h5>Protein:<span className="ml-2">{dish.ProteinValue}</span>g</h5><hr />
                                                 <h5>Carbohydrates:<span className="ml-2">{dish.Carbohydrates}</span>g</h5><hr />

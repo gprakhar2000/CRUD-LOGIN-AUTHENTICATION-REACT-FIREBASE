@@ -4,6 +4,7 @@ import axios from 'axios';
 import {useHistory} from 'react-router-dom'
 import firebase from '../firebase'
 import {v4 as uuidv4} from 'uuid'
+import './dishes.css'
 const AddDish = () => {
     let history=useHistory()
     const[dish,setDish]=useState({
@@ -25,7 +26,7 @@ const AddDish = () => {
     }
     return (
         <div className="container mt-4">
-            <div className="w-75 mx-auto shadow p-5">
+            <div className="my-auto mx-auto shadow p-5" id="addDishes">
                 <h2 className="text-center mb-4">Add A Dish</h2>
                 <form onSubmit={e=>onSubmit(e)}>
                     <div className="form-group">

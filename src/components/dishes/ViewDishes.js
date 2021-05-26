@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useParams,useHistory } from 'react-router-dom'
-
+import './dishes.css'
 import firebase from '../firebase'
 const ViewDishes = () => {
 
@@ -27,11 +27,11 @@ const ViewDishes = () => {
         }));
     },[])
     return (
-        <div>
+        <div className="container">
             <Link className="btn btn-primary d-inline-flex mt-4 ml-4 p-2 d-flex justify-content-end" to="/admin">
                     Back to Home
                 </Link>
-            <div className="container w-50 py-4">
+            <div className="mx-auto my-auto py-4" id="viewdishes">
                 
                 <h2 className="text-center"><span className="badge badge-success">Your Dish</span></h2>
 

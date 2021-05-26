@@ -1,5 +1,6 @@
 body{
     overflow-x: hidden;
+    margin:0;
 }
 #dishes p{
     font-size:2em;
@@ -27,4 +28,17 @@ body{
     border-radius: 5px;
     border: none;
     box-shadow: 5px 5px 10px #9E9E9E
+}
+
+#search{
+    width: 25%;
+    border: 1.5px solid;
+}
+@media screen and (max-width:992px) {
+    #search{
+        width: 50%;
+    }
+    .map{
+        margin: 4%;
+    }
 }

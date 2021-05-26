@@ -3,3 +3,12 @@
     top:2%;
     right:0.5%;
 }
+#container-login{
+    width:50%;
+    overflow-y: hidden;
+}
+@media screen and (max-width: 992px) {
+    #container-login{
+        width:100%;
+    }
+}

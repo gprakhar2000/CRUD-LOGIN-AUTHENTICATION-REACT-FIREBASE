@@ -115,8 +115,8 @@ const Login = () => {
 
     const [showPassword, setShowPassword] = useState(false)
     return (
-        <div className="container d-flex flex-wrap py-5 mt-5">
-            <div className="w-50 mx-auto my-auto shadow p-5">
+        <div className="container py-5 mt-5">
+            <div className="mx-auto my-auto shadow p-5" id="container-login">
                 <h2 className="text-center mb-4">Hi! Login</h2>
                 <div className="form-group">
                     <input
@@ -158,7 +158,7 @@ const Login = () => {
                         <label className="form-check-label" for="User">User</label>
                     </div>
                     <button class="btn btn-primary btn-lg btn-block mt-2 mb-2" onClick={handleLogin}>Login</button>
-                    <button class="btn btn-outline-dark btn-lg  mt-2 mb-2" onClick={handleSignInwithGoogle}>Sign In <FcGoogle /></button>
+                    <button class="btn btn-outline-dark rounded-pill btn-lg  mt-2 mb-2" onClick={handleSignInwithGoogle}>Login with Google <FcGoogle /></button>
                     <p class="m-4 text-right">Don't have an account?
                                 <Link to='/register'><button class="btn btn-secondary btn-sm ml-2">Register</button></Link></p>
 

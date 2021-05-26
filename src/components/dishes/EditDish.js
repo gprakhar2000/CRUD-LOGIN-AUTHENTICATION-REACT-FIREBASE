@@ -3,6 +3,7 @@ import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import {useHistory,useParams} from 'react-router-dom'
 import firebase from '../firebase'
+import './dishes.css'
 const ref =firebase.firestore().collection("dishes")
 const EditDish = () => {
     let history=useHistory()
@@ -36,7 +37,7 @@ const EditDish = () => {
     },[])
     return (
         <div className="container mt-4">
-            <div className="w-75 mx-auto shadow p-5">
+            <div className="mx-auto my-auto shadow p-5" id="editdishes">
                 <h2 className="text-center mb-4">Edit A Dish</h2>
                 <form onSubmit={e=>onSubmit(e)}>
                     <div className="form-group">
